@@ -1,0 +1,11 @@
+{
+  "name": "datatools",
+  "license": "LGPL",
+  "tags": ["data","cross"],
+  "description": "Light library with a data structures stuff: read-only arrays, clone and compare support for `Array` and `Map`.",
+  "contributors": ["yar3333"],
+  "releasenote": "Init.",
+  "version": "1.0.0",
+  "url": "https://bitbucket.org/yar3333/haxe-datatools",
+  "dependencies": {}
+}
