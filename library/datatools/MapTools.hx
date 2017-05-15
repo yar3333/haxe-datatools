@@ -40,8 +40,8 @@ class MapTools
 	
 	public static function equCustom<K,V>(a:Map<K,V>, b:Map<K,V>, cmp:V->V->Bool) : Bool
 	{
-		var keysA = a.keys().array();
-		var keysB = b.keys().array();
+		var keysA = []; for (k in a.keys()) keysA.push(k);
+		var keysB = []; for (k in b.keys()) keysB.push(k);
 		
 		if (keysA.length != keysB.length) return false;
 		
