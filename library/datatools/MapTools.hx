@@ -1,7 +1,5 @@
 package datatools;
 
-using Lambda;
-
 class MapTools
 {
 	public static function clone<K,Z,V:{ function clone() : Z; }>(m:Map<K,V>) : Map<K,V>

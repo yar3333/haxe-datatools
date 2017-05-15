@@ -49,11 +49,4 @@ class ArrayTools
 		}
 		return accum;
 	}
-	
-	#if js
-	public static function fromBytes(data:haxe.io.Bytes) : Array<Int>
-	{
-		return untyped Array.prototype.slice.call(data.b);
-	}
-	#end
 }
