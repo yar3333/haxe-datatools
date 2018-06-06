@@ -55,4 +55,24 @@ class MapTools
 		
 		return true;
 	}
+	
+	public static function toObject<K,V>(map:Map<K,V>) : Dynamic
+	{
+		var r = {};
+		for (k in map.keys())
+		{
+			Reflect.setField(r, Std.string(k), map.get(k));
+		}
+		return r;
+	}
+	
+	public static function fromObject<V>(obj:Dynamic) : Map<String,V>
+	{
+		var r = new Map<String, V>();
+		for (k in Reflect.fields(obj))
+		{
+			r.set(k, Reflect.field(obj, k));
+		}
+		return r;
+	}
 }
