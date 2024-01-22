@@ -14,7 +14,7 @@ class ArrayTools
 		return true;
 	}
 
-	public static function clone<Z, T:{ function clone() : Z; }>(array:Array<T>) : Array<T>
+	public static function clone<Z, T:{ function clone() : Z; }>(array:ArrayRO<T>) : Array<T>
 	{
 		var r = new Array<T>();
 		for (item in array)
