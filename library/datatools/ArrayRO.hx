@@ -30,6 +30,6 @@ abstract ArrayRO<T>(std.Array<T>) from std.Array<T>
 		}
 		return -1;
 	}
-	
-	public static function fromDerived<T, Z:T>(arr:ArrayRO<Z>) return (cast arr:ArrayRO<T>);
+    
+    @:from static inline function fromDerived<T, D:T>(arr:ArrayRO<D>) return (cast arr : ArrayRO<T>);
 }

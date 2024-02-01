@@ -1,0 +1,4 @@
+--js dummy.js
+--no-output
+--class-path library
+--macro include("datatools")
