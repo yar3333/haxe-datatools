@@ -15,10 +15,10 @@ class B extends A {}
 
 function main()
 {
-    var roA: ArrayRO<A> = [ new A() ]; // conversion from Array to ArrayRO with no expilcit cast
+    var roA: ArrayRO<A> = [ new A() ]; // conversion from Array to ArrayRO with no explicit cast
 
     var arrB = new ArrayRO<B>();
-    var arrA: ArrayRO<A> = arrB; // downcast conversion w/o expilcit cast
+    var arrA: ArrayRO<A> = arrB; // downcast conversion w/o explicit cast
 }
 ```
 
