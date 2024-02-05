@@ -2,7 +2,7 @@ package datatools;
 
 class ArrayTools
 {
-	public static function equ<Z, T:{ function equ(e:Z) : Bool; }>(a:Array<T>, b:Array<T>) : Bool
+	public static function equ<Z, T:{ function equ(e:Z) : Bool; }>(a:ArrayRO<T>, b:ArrayRO<T>) : Bool
 	{
 		if (a.length != b.length) return false;
 		for (i in 0...a.length)
@@ -10,6 +10,18 @@ class ArrayTools
 			if (a[i] == null && b[i] != null) return false;
 			if (a[i] != null && b[i] == null) return false;
 			if (a[i] != null && !a[i].equ(cast b[i])) return false;
+		}
+		return true;
+	}
+
+	public static function equByFunc<T>(a:ArrayRO<T>, b:ArrayRO<T>, equFunc:T->T->Bool) : Bool
+	{
+		if (a.length != b.length) return false;
+		for (i in 0...a.length)
+		{
+			if (a[i] == null && b[i] != null) return false;
+			if (a[i] != null && b[i] == null) return false;
+			if (a[i] != null && !equFunc(a[i], b[i])) return false;
 		}
 		return true;
 	}
@@ -31,7 +43,7 @@ class ArrayTools
 		arr[j] = z;
 	}
 	
-	public static function equFast<T>(a:Array<T>, b:Array<T>) : Bool
+	public static function equFast<T>(a:ArrayRO<T>, b:ArrayRO<T>) : Bool
 	{
 		if (a.length != b.length) return false;
 		for (i in 0...a.length)
@@ -41,7 +53,7 @@ class ArrayTools
 		return true;
 	}
 	
-	public static function appendUniqueFast<T>(accum:Array<T>, items:Array<T>) : Array<T>
+	public static function appendUniqueFast<T>(accum:Array<T>, items:ArrayRO<T>) : Array<T>
 	{
 		for (item in items)
 		{
