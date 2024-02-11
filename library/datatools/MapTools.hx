@@ -28,12 +28,12 @@ class MapTools
 	
 	public static function equ<K,Z,V:{ function equ(e:Z) : Bool; }>(a:Map<K,V>, b:Map<K,V>) : Bool
 	{
-		return equCustom(a, b, function(e1, e2) return (e1 == null && e2 == null) || (e1 != null && e2 != null && e1.equ(cast e2)));
+		return equCustom(a, b, (e1, e2) -> (e1 == null && e2 == null) || (e1 != null && e2 != null && e1.equ(cast e2)));
 	}
 	
 	public static function equFast<K,V>(a:Map<K,V>, b:Map<K,V>) : Bool
 	{
-		return equCustom(a, b, function(e1, e2) return e1 == e2);
+		return equCustom(a, b, (e1, e2) -> e1 == e2);
 	}
 	
 	public static function equCustom<K,V>(a:Map<K,V>, b:Map<K,V>, cmp:V->V->Bool) : Bool
@@ -56,17 +56,17 @@ class MapTools
 		return true;
 	}
 	
-	public static function toObject<K,V>(map:Map<K,V>) : Dynamic
+	public static function toObject<V>(map:Map<String, V>) : Dynamic<V>
 	{
 		var r = {};
 		for (k in map.keys())
 		{
-			Reflect.setField(r, Std.string(k), map.get(k));
+			Reflect.setField(r, k, map.get(k));
 		}
 		return r;
 	}
 	
-	public static function fromObject<V>(obj:Dynamic) : Map<String,V>
+	public static function fromObject<V>(obj:Dynamic) : Map<String, V>
 	{
 		var r = new Map<String, V>();
 		for (k in Reflect.fields(obj))

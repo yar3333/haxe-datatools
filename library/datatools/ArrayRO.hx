@@ -30,6 +30,11 @@ abstract ArrayRO<T>(std.Array<T>) from std.Array<T>
 		}
 		return -1;
 	}
+
+    public function filterByType<R>(klass:Class<R>) : Array<R>
+    {
+        return cast this.filter(x -> Std.isOfType(x, klass));
+    }
     
     @:from static inline function fromDerived<T, D:T>(arr:ArrayRO<D>) return (cast arr : ArrayRO<T>);
 }
